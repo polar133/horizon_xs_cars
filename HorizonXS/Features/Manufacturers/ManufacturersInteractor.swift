@@ -9,9 +9,12 @@ import Foundation
 
 protocol ManufacturersBusinessLogic {
     func getManufacturers()
+    func manufacturerSelected(request: Manufacturers.Request)
 }
 
 protocol ManufacturersDataStore {
+    var id: String { get set }
+    var name: String { get set }
 }
 
 class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStore {
@@ -22,6 +25,8 @@ class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStor
     var totalElements: Int?
     var brands: [Brand] = []
     var isLoading: Bool = false
+    var id: String = ""
+    var name: String = ""
 
     // MARK: Get manufacturers from service (worker)
     func getManufacturers() {
@@ -54,6 +59,12 @@ class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStor
             }
             self?.isLoading = false
         })
+    }
+
+    func manufacturerSelected(request: Manufacturers.Request) {
+        self.id = request.id
+        self.name = request.name
+        self.presenter?.presentModel()
     }
 
 }

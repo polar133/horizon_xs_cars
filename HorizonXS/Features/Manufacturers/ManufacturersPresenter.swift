@@ -13,6 +13,7 @@ protocol ManufacturersPresentationLogic {
     func presentError(msg: String)
     func hideError()
     func presentManufacturers(response: Manufacturers.Response)
+    func presentModel()
 }
 
 class ManufacturersPresenter: ManufacturersPresentationLogic {
@@ -34,6 +35,10 @@ class ManufacturersPresenter: ManufacturersPresentationLogic {
         let viewModel = Manufacturers.ViewModel(hasMoreElements: response.hasMoreElements, brands: brands)
         viewController?.displayManufacturers(viewModel: viewModel)
         hideLoading()
+    }
+
+    func presentModel() {
+        self.viewController?.goToModels()
     }
 
     func presentLoading() {

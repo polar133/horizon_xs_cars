@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ManufacturersRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToModels()
 }
 
 protocol ManufacturersDataPassing {
@@ -20,33 +20,19 @@ class ManufacturersRouter: NSObject, ManufacturersRoutingLogic, ManufacturersDat
     var dataStore: ManufacturersDataStore?
 
     // MARK: Routing
-
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-
-    // MARK: Navigation
-
-    //func navigateToSomewhere(source: ManufacturersViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func routeToModels() {
+        let destinationVC = ModelsBuilder.build()
+        guard let dataStore = dataStore, var destinationDS = destinationVC.router?.dataStore else {
+            return
+        }
+        passDataToModels(source: dataStore, destination: &destinationDS)
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
 
     // MARK: Passing data
 
-    //func passDataToSomewhere(source: ManufacturersDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToModels(source: ManufacturersDataStore, destination: inout ModelsDataStore) {
+        destination.name = source.name
+        destination.id = source.id
+    }
 }

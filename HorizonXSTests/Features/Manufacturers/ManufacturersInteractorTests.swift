@@ -84,11 +84,32 @@ class ManufacturersInteractorTests: XCTestCase {
         // Then
         XCTAssertFalse(spy.presentManufacturersCalled)
     }
-    
+
+    func testManufacturerSelected() {
+        //Given
+        let spy = ManufacturersPresentationLogicSpy()
+        sut.presenter = spy
+        sut.id = ""
+        sut.name = ""
+        let request = Manufacturers.Request(id: "007", name: "Aston Martin")
+
+        //When
+        sut.manufacturerSelected(request: request)
+
+        //Then
+        XCTAssertTrue(spy.presentModelCalled)
+        XCTAssertEqual(sut.id, "007")
+        XCTAssertEqual(sut.name, "Aston Martin")
+    }
 }
 
 // MARK: Presenter SPY
 class ManufacturersPresentationLogicSpy: ManufacturersPresentationLogic {
+    var presentModelCalled = false
+    func presentModel() {
+        presentModelCalled = true
+    }
+
     var presentManufacturersCalled = false
     func presentManufacturers(response: Manufacturers.Response) {
         presentManufacturersCalled = true

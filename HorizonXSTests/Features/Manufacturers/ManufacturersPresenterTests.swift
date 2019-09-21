@@ -93,10 +93,27 @@ class ManufacturersPresenterTests: XCTestCase {
         //Then
         XCTAssertTrue(spy.hideErrorCalled)
     }
+
+    func testPresentModel() {
+        //Given
+        let spy = ManufacturersDisplayLogicSpy()
+        sut.viewController = spy
+        sut.hasError = true
+
+        //When
+        sut.presentModel()
+
+        //Then
+        XCTAssertTrue(spy.goToModelsCalled)
+    }
 }
 
 // MARK: ManufacturersDisplaySpy
 class ManufacturersDisplayLogicSpy: ManufacturersDisplayLogic {
+    var goToModelsCalled = false
+    func goToModels() {
+        goToModelsCalled = true
+    }
 
     var displayManufacturersCalled = false
     func displayManufacturers(viewModel: Manufacturers.ViewModel) {

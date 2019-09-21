@@ -11,6 +11,11 @@ typealias BrandViewModel = Manufacturers.ViewModel.Brand
 
 enum Manufacturers {
     // MARK: Use cases
+    struct Request {
+        var id: String
+        var name: String
+    }
+
     struct Response {
         var hasMoreElements: Bool
         var brands: [Brand]

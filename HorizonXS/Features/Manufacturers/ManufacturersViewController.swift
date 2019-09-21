@@ -13,6 +13,7 @@ protocol ManufacturersDisplayLogic: class {
     func hideLoading()
     func displayError(msg: String)
     func hideError()
+    func goToModels()
 }
 
 class ManufacturersViewController: UITableViewController {
@@ -28,8 +29,6 @@ class ManufacturersViewController: UITableViewController {
         configTableView()
         loadManufacturers()
     }
-
-    // MARK: Routing
 
     // MARK: Load Manufacturers
     func loadManufacturers() {
@@ -48,6 +47,11 @@ extension ManufacturersViewController: ManufacturersDisplayLogic {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+
+    // MARK: Routing
+    func goToModels() {
+        router?.routeToModels()
     }
 
     func displayLoading() {
@@ -95,6 +99,14 @@ extension ManufacturersViewController: UITableViewDataSourcePrefetching {
             cell.contentView.backgroundColor = UIColor.appColor(viewModel.backgroundColor)
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !isLoadingCell(for: indexPath.row), let viewModel = viewModel?.brands[indexPath.row] else {
+            return
+        }
+        let request = Manufacturers.Request(id: viewModel.id, name: viewModel.name)
+        self.interactor?.manufacturerSelected(request: request)
     }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

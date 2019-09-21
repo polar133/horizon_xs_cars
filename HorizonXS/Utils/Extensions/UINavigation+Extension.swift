@@ -13,7 +13,8 @@ extension UINavigationController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationBar.prefersLargeTitles = true
-        self.navigationBar.barTintColor = .white
+        self.navigationBar.barTintColor = UIColor.appColor(.background)
+        self.navigationBar.tintColor = UIColor.appColor(.font)
         self.navigationBar.shadowImage = UIImage()
     }
 
