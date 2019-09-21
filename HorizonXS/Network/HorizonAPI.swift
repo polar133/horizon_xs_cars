@@ -4,9 +4,13 @@
 //
 //  Created by Carlos Jimenez on 9/21/19.
 //  Copyright © 2019 Carlos Jimenez. All rights reserved.
-//
 
 import Foundation
+
+enum Result<T> {
+    case success(T)
+    case failure(XSError)
+}
 
 enum HorizonAPI {
 
