@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9624230223366A74009B6A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624230123366A74009B6A6C /* AppDelegate.swift */; };
+		9624230423366A74009B6A6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624230323366A74009B6A6C /* SceneDelegate.swift */; };
+		9624230B23366A77009B6A6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9624230A23366A77009B6A6C /* Assets.xcassets */; };
+		9624230E23366A77009B6A6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9624230C23366A77009B6A6C /* LaunchScreen.storyboard */; };
+		9624231923366A77009B6A6C /* HorizonXSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624231823366A77009B6A6C /* HorizonXSTests.swift */; };
+		962423642336777A009B6A6C /* HorizonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423632336777A009B6A6C /* HorizonAPI.swift */; };
+		9624236623367926009B6A6C /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9624236523367926009B6A6C /* api.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9624231523366A77009B6A6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 962422F623366A74009B6A6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 962422FD23366A74009B6A6C;
+			remoteInfo = HorizonXS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		962422FE23366A74009B6A6C /* HorizonXS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorizonXS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9624230123366A74009B6A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9624230323366A74009B6A6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9624230A23366A77009B6A6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9624230D23366A77009B6A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9624230F23366A77009B6A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9624231423366A77009B6A6C /* HorizonXSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorizonXSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9624231823366A77009B6A6C /* HorizonXSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonXSTests.swift; sourceTree = "<group>"; };
+		9624231A23366A77009B6A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		962423632336777A009B6A6C /* HorizonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonAPI.swift; sourceTree = "<group>"; };
+		9624236523367926009B6A6C /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		962422FB23366A74009B6A6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9624231123366A77009B6A6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		962422F523366A74009B6A6C = {
+			isa = PBXGroup;
+			children = (
+				9624230023366A74009B6A6C /* HorizonXS */,
+				9624231723366A77009B6A6C /* HorizonXSTests */,
+				962422FF23366A74009B6A6C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		962422FF23366A74009B6A6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				962422FE23366A74009B6A6C /* HorizonXS.app */,
+				9624231423366A77009B6A6C /* HorizonXSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9624230023366A74009B6A6C /* HorizonXS */ = {
+			isa = PBXGroup;
+			children = (
+				9624236223367742009B6A6C /* Utils */,
+				962423612336773B009B6A6C /* Network */,
+				9624236023367731009B6A6C /* Commons */,
+				9624232423366BE6009B6A6C /* Features */,
+				9624232323366AA5009B6A6C /* Resources */,
+				9624230123366A74009B6A6C /* AppDelegate.swift */,
+				9624230323366A74009B6A6C /* SceneDelegate.swift */,
+			);
+			path = HorizonXS;
+			sourceTree = "<group>";
+		};
+		9624231723366A77009B6A6C /* HorizonXSTests */ = {
+			isa = PBXGroup;
+			children = (
+				9624231823366A77009B6A6C /* HorizonXSTests.swift */,
+				9624231A23366A77009B6A6C /* Info.plist */,
+			);
+			path = HorizonXSTests;
+			sourceTree = "<group>";
+		};
+		9624232323366AA5009B6A6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9624230A23366A77009B6A6C /* Assets.xcassets */,
+				9624230C23366A77009B6A6C /* LaunchScreen.storyboard */,
+				9624230F23366A77009B6A6C /* Info.plist */,
+				9624236523367926009B6A6C /* api.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9624232423366BE6009B6A6C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		9624236023367731009B6A6C /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		962423612336773B009B6A6C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				962423632336777A009B6A6C /* HorizonAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9624236223367742009B6A6C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		962422FD23366A74009B6A6C /* HorizonXS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9624231D23366A77009B6A6C /* Build configuration list for PBXNativeTarget "HorizonXS" */;
+			buildPhases = (
+				962422FA23366A74009B6A6C /* Sources */,
+				962422FB23366A74009B6A6C /* Frameworks */,
+				962422FC23366A74009B6A6C /* Resources */,
+				9624235F233671EB009B6A6C /* Swiftlint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HorizonXS;
+			productName = HorizonXS;
+			productReference = 962422FE23366A74009B6A6C /* HorizonXS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9624231323366A77009B6A6C /* HorizonXSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9624232023366A77009B6A6C /* Build configuration list for PBXNativeTarget "HorizonXSTests" */;
+			buildPhases = (
+				9624231023366A77009B6A6C /* Sources */,
+				9624231123366A77009B6A6C /* Frameworks */,
+				9624231223366A77009B6A6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9624231623366A77009B6A6C /* PBXTargetDependency */,
+			);
+			name = HorizonXSTests;
+			productName = HorizonXSTests;
+			productReference = 9624231423366A77009B6A6C /* HorizonXSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		962422F623366A74009B6A6C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Carlos Jimenez";
+				TargetAttributes = {
+					962422FD23366A74009B6A6C = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					9624231323366A77009B6A6C = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 962422FD23366A74009B6A6C;
+					};
+				};
+			};
+			buildConfigurationList = 962422F923366A74009B6A6C /* Build configuration list for PBXProject "HorizonXS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 962422F523366A74009B6A6C;
+			productRefGroup = 962422FF23366A74009B6A6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				962422FD23366A74009B6A6C /* HorizonXS */,
+				9624231323366A77009B6A6C /* HorizonXSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		962422FC23366A74009B6A6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9624230E23366A77009B6A6C /* LaunchScreen.storyboard in Resources */,
+				9624236623367926009B6A6C /* api.plist in Resources */,
+				9624230B23366A77009B6A6C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9624231223366A77009B6A6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9624235F233671EB009B6A6C /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		962422FA23366A74009B6A6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9624230223366A74009B6A6C /* AppDelegate.swift in Sources */,
+				9624230423366A74009B6A6C /* SceneDelegate.swift in Sources */,
+				962423642336777A009B6A6C /* HorizonAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9624231023366A77009B6A6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9624231923366A77009B6A6C /* HorizonXSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9624231623366A77009B6A6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 962422FD23366A74009B6A6C /* HorizonXS */;
+			targetProxy = 9624231523366A77009B6A6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9624230C23366A77009B6A6C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9624230D23366A77009B6A6C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9624231B23366A77009B6A6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9624231C23366A77009B6A6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9624231E23366A77009B6A6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HorizonXS/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.personal.HorizonXS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9624231F23366A77009B6A6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HorizonXS/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.personal.HorizonXS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9624232123366A77009B6A6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HorizonXSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.personal.HorizonXSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorizonXS.app/HorizonXS";
+			};
+			name = Debug;
+		};
+		9624232223366A77009B6A6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HorizonXSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.personal.HorizonXSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorizonXS.app/HorizonXS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		962422F923366A74009B6A6C /* Build configuration list for PBXProject "HorizonXS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9624231B23366A77009B6A6C /* Debug */,
+				9624231C23366A77009B6A6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9624231D23366A77009B6A6C /* Build configuration list for PBXNativeTarget "HorizonXS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9624231E23366A77009B6A6C /* Debug */,
+				9624231F23366A77009B6A6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9624232023366A77009B6A6C /* Build configuration list for PBXNativeTarget "HorizonXSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9624232123366A77009B6A6C /* Debug */,
+				9624232223366A77009B6A6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 962422F623366A74009B6A6C /* Project object */;
+}
