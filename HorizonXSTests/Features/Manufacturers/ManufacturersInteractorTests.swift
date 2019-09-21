@@ -41,7 +41,7 @@ class ManufacturersInteractorTests: XCTestCase {
         sut.getManufacturers()
 
         // Then
-        XCTAssertTrue(spy.presentSomethingCalled)
+        XCTAssertTrue(spy.presentManufacturersCalled)
     }
 
     func testGetManufacturerseError() {
@@ -56,14 +56,42 @@ class ManufacturersInteractorTests: XCTestCase {
         // Then
         XCTAssertTrue(spy.presentErrorCalled)
     }
+
+    func testGetManufacturersLoading() {
+        // Given
+        let spy = ManufacturersPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ManufacturersWorkerSpy()
+        sut.isLoading = true
+
+        // When
+        sut.getManufacturers()
+
+        // Then
+        XCTAssertFalse(spy.presentManufacturersCalled)
+    }
+
+    func testGetManufacturersLessPages() {
+        // Given
+        let spy = ManufacturersPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ManufacturersWorkerSpy()
+        sut.currentPage = 100
+
+        // When
+        sut.getManufacturers()
+
+        // Then
+        XCTAssertFalse(spy.presentManufacturersCalled)
+    }
     
 }
 
 // MARK: Presenter SPY
 class ManufacturersPresentationLogicSpy: ManufacturersPresentationLogic {
-    var presentSomethingCalled = false
+    var presentManufacturersCalled = false
     func presentManufacturers(response: Manufacturers.Response) {
-        presentSomethingCalled = true
+        presentManufacturersCalled = true
     }
     var presentLoadingCalled = false
     func presentLoading() {

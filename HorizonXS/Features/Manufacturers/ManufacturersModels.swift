@@ -12,10 +12,12 @@ typealias BrandViewModel = Manufacturers.ViewModel.Brand
 enum Manufacturers {
     // MARK: Use cases
     struct Response {
-        var brands: Set<Brand>
+        var hasMoreElements: Bool
+        var brands: [Brand]
     }
 
     struct ViewModel {
+        var hasMoreElements: Bool
         var brands: [Brand]
         //swiftlint:disable nesting
         struct Brand {

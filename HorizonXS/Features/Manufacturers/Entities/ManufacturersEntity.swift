@@ -12,7 +12,7 @@ struct ManufacturersEntity: Decodable, Equatable {
     let page: Int?
     let pageSize: Int?
     let totalPageCount: Int?
-    let brands: Set<Brand>
+    let brands: [Brand]
 
     private enum CodingKeys: String, CodingKey {
         case page
@@ -26,8 +26,8 @@ struct ManufacturersEntity: Decodable, Equatable {
         page = try values.decode(Int.self, forKey: .page)
         pageSize = try values.decode(Int.self, forKey: .pageSize)
         totalPageCount = try values.decode(Int.self, forKey: .totalPageCount)
-        let list = try values.decode([String: String].self, forKey: .brands)
-        brands = Set(list.compactMap { return Brand(id: $0.key, name: $0.value) })
+        let list = try values.decode([String: String].self, forKey: .brands).sorted { $0.key < $1.key }
+        brands = list.compactMap { return Brand(id: $0.key, name: $0.value) }
     }
 }
 

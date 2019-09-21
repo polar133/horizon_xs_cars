@@ -20,7 +20,7 @@ class ManufacturersPresenter: ManufacturersPresentationLogic {
     var isLoading = false
     var hasError = false
 
-    // MARK: Do something
+    // MARK: Present Manufacturers
 
     func presentManufacturers(response: Manufacturers.Response) {
         let brands: [BrandViewModel] = response.brands.reduce(into: [], { brands, object in
@@ -31,8 +31,8 @@ class ManufacturersPresenter: ManufacturersPresentationLogic {
                                          backgroundColor: odd ? .primary : .secondary ))
         })
         hideError()
-        let viewModel = Manufacturers.ViewModel(brands: brands)
-        viewController?.displaySomething(viewModel: viewModel)
+        let viewModel = Manufacturers.ViewModel(hasMoreElements: response.hasMoreElements, brands: brands)
+        viewController?.displayManufacturers(viewModel: viewModel)
         hideLoading()
     }
 

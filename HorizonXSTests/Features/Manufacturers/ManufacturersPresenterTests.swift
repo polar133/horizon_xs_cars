@@ -35,13 +35,13 @@ class ManufacturersPresenterTests: XCTestCase {
         // Given
         let spy = ManufacturersDisplayLogicSpy()
         sut.viewController = spy
-        let response = Manufacturers.Response(brands: [])
+        let response = Manufacturers.Response(hasMoreElements: false, brands: [])
 
         // When
         sut.presentManufacturers(response: response)
 
         // Then
-        XCTAssertTrue(spy.displaySomethingCalled)
+        XCTAssertTrue(spy.displayManufacturersCalled)
     }
 
     func testPresentLoading() {
@@ -98,9 +98,9 @@ class ManufacturersPresenterTests: XCTestCase {
 // MARK: ManufacturersDisplaySpy
 class ManufacturersDisplayLogicSpy: ManufacturersDisplayLogic {
 
-    var displaySomethingCalled = false
-    func displaySomething(viewModel: Manufacturers.ViewModel) {
-        displaySomethingCalled = true
+    var displayManufacturersCalled = false
+    func displayManufacturers(viewModel: Manufacturers.ViewModel) {
+        displayManufacturersCalled = true
     }
 
     var displayLoadingCalled = false
