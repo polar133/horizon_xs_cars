@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ManufacturersBusinessLogic {
-    func doSomething(request: Manufacturers.Request)
+    func getManufacturers()
 }
 
 protocol ManufacturersDataStore {
@@ -16,17 +16,31 @@ protocol ManufacturersDataStore {
 
 class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStore {
     var presenter: ManufacturersPresentationLogic?
-    var worker: ManufacturersWorker?
+    lazy var worker = ManufacturersWorker()
 
-    // MARK: Do something
+    private var currentPage = 0
+    private var totalElements: Int?
+    private var brands: Set<Brand> = []
 
-    func doSomething(request: Manufacturers.Request) {
-        worker = ManufacturersWorker()
-        worker?.fetchManufacturers(callback: {[weak self] response in
+    // MARK: Get manufacturers from service (worker)
+    func getManufacturers() {
+        if brands.isEmpty {
+            presenter?.presentLoading()
+        }
 
+        worker.fetchManufacturers(page: currentPage, callback: { [weak self] response in
+            switch response {
+            case .success(let entity):
+                var brands = self?.brands ?? []
+                entity.brands.forEach { brands.insert($0) }
+                self?.brands = entity.brands
+                self?.totalElements = entity.totalPageCount
+                let response = Manufacturers.Response(brands: brands)
+                self?.presenter?.presentManufacturers(response: response)
+            case .failure(let error):
+                self?.presenter?.presentError(msg: error.localizedDescription)
+            }
         })
-
-        let response = Manufacturers.Response()
-        self.presenter?.presentSomething(response: response)
     }
+
 }

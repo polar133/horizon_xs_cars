@@ -8,16 +8,55 @@
 import Foundation
 
 protocol ManufacturersPresentationLogic {
-    func presentSomething(response: Manufacturers.Response)
+    func presentLoading()
+    func hideLoading()
+    func presentError(msg: String)
+    func hideError()
+    func presentManufacturers(response: Manufacturers.Response)
 }
 
 class ManufacturersPresenter: ManufacturersPresentationLogic {
     weak var viewController: ManufacturersDisplayLogic?
+    var isLoading = false
+    var hasError = false
 
     // MARK: Do something
 
-    func presentSomething(response: Manufacturers.Response) {
-        let viewModel = Manufacturers.ViewModel()
+    func presentManufacturers(response: Manufacturers.Response) {
+        let brands: [BrandViewModel] = response.brands.reduce(into: [], { brands, object in
+            let odd = brands.count % 2 != 0
+            brands.append(BrandViewModel(id: object.id,
+                                         name: object.name.capitalized,
+                                         fontColor: .background,
+                                         backgroundColor: odd ? .primary : .secondary ))
+        })
+        hideError()
+        let viewModel = Manufacturers.ViewModel(brands: brands)
         viewController?.displaySomething(viewModel: viewModel)
+        hideLoading()
+    }
+
+    func presentLoading() {
+        isLoading = true
+        self.viewController?.displayLoading()
+    }
+
+    func hideLoading() {
+        if isLoading {
+            self.viewController?.hideLoading()
+            isLoading = false
+        }
+    }
+
+    func presentError(msg: String) {
+        hasError = true
+        self.viewController?.displayError(msg: msg)
+    }
+
+    func hideError() {
+        if hasError {
+            self.viewController?.hideError()
+            hasError = false
+        }
     }
 }

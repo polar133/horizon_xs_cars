@@ -33,6 +33,7 @@
 		9624239A233694A8009B6A6C /* get_manufacturer_200.json in Resources */ = {isa = PBXBuildFile; fileRef = 96242399233694A8009B6A6C /* get_manufacturer_200.json */; };
 		9624239C233694C9009B6A6C /* get_manufacturer_400.json in Resources */ = {isa = PBXBuildFile; fileRef = 9624239B233694C9009B6A6C /* get_manufacturer_400.json */; };
 		9624239E23369B25009B6A6C /* ManufacturersStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624239D23369B25009B6A6C /* ManufacturersStubs.swift */; };
+		962423A02336B097009B6A6C /* HorizonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624239F2336B097009B6A6C /* HorizonUI.swift */; };
 		D6FFFEFBB0DEFF4384147ED4 /* Pods_HorizonXS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4124BE9A288738A518058659 /* Pods_HorizonXS.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		96242399233694A8009B6A6C /* get_manufacturer_200.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get_manufacturer_200.json; sourceTree = "<group>"; };
 		9624239B233694C9009B6A6C /* get_manufacturer_400.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get_manufacturer_400.json; sourceTree = "<group>"; };
 		9624239D23369B25009B6A6C /* ManufacturersStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersStubs.swift; sourceTree = "<group>"; };
+		9624239F2336B097009B6A6C /* HorizonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonUI.swift; sourceTree = "<group>"; };
 		AA4D3159E1B2BC5CF0DD6104 /* Pods-HorizonXS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.release.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.release.xcconfig"; sourceTree = "<group>"; };
 		F1A718BF0CADA58537E218F3 /* Pods_HorizonXSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HorizonXSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F7530596E646B29341D28D /* Pods-HorizonXS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.debug.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				962423822336879A009B6A6C /* Extensions */,
+				9624239F2336B097009B6A6C /* HorizonUI.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				9624237A23368255009B6A6C /* ManufacturersPresenter.swift in Sources */,
 				9624239623369243009B6A6C /* String+Extension.swift in Sources */,
 				9624237F23368255009B6A6C /* ManufacturersInteractor.swift in Sources */,
+				962423A02336B097009B6A6C /* HorizonUI.swift in Sources */,
 				9624237B23368255009B6A6C /* ManufacturersWorker.swift in Sources */,
 				9624239423369203009B6A6C /* XSError.swift in Sources */,
 				9624239223369039009B6A6C /* ManufacturersEntity.swift in Sources */,

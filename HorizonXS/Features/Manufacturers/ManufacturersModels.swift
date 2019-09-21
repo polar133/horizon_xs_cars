@@ -7,12 +7,22 @@
 //
 import Foundation
 
+typealias BrandViewModel = Manufacturers.ViewModel.Brand
+
 enum Manufacturers {
     // MARK: Use cases
-    struct Request {
-    }
     struct Response {
+        var brands: Set<Brand>
     }
+
     struct ViewModel {
+        var brands: [Brand]
+        //swiftlint:disable nesting
+        struct Brand {
+            let id: String
+            let name: String
+            let fontColor: AssetsColor
+            let backgroundColor: AssetsColor
+        }
     }
 }
