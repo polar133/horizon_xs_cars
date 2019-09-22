@@ -37,6 +37,8 @@ class ManufacturersViewController: UITableViewController {
 
     func configTableView() {
         tableView.prefetchDataSource = self
+        tableView.register(UINib(nibName: ManufacturerCell.nibName, bundle: Bundle.main), forCellReuseIdentifier: ManufacturerCell.reuseIdentifier)
+        tableView.separatorStyle = .none
     }
 }
 
@@ -74,6 +76,10 @@ extension ManufacturersViewController: ManufacturersDisplayLogic {
 // MARK: UITableViewDelegate extension
 extension ManufacturersViewController: UITableViewDataSourcePrefetching {
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+
     func isLoadingCell(for tag: Int) -> Bool {
       return tag + 1 >= viewModel?.brands.count ?? 0
     }
@@ -86,19 +92,17 @@ extension ManufacturersViewController: UITableViewDataSourcePrefetching {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-        cell.tag = indexPath.row
-        if isLoadingCell(for: indexPath.row) {
-            cell.textLabel?.text = "Loading"
-        } else {
-            guard let viewModel = viewModel?.brands[indexPath.row] else {
+        guard !isLoadingCell(for: indexPath.row),
+            let cell = tableView.dequeueReusableCell(withIdentifier: ManufacturerCell.reuseIdentifier, for: indexPath) as? ManufacturerCell,
+            let viewModel = viewModel?.brands[indexPath.row] else {
+                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+                cell.tag = indexPath.row
+                cell.textLabel?.text = "Loading"
                 return cell
-            }
-            cell.textLabel?.textColor = UIColor.appColor(viewModel.fontColor)
-            cell.textLabel?.text = viewModel.name
-            cell.contentView.backgroundColor = UIColor.appColor(viewModel.backgroundColor)
         }
+        cell.configCell(viewModel: viewModel)
         return cell
+
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

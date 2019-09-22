@@ -30,6 +30,7 @@ enum Manufacturers {
             let name: String
             let fontColor: AssetsColor
             let backgroundColor: AssetsColor
+            let borderColor: AssetsColor
         }
     }
 }

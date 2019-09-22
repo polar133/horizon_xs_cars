@@ -27,9 +27,10 @@ class ManufacturersPresenter: ManufacturersPresentationLogic {
         let brands: [BrandViewModel] = response.brands.reduce(into: [], { brands, object in
             let odd = brands.count % 2 != 0
             brands.append(BrandViewModel(id: object.id,
-                                         name: object.name.capitalized,
-                                         fontColor: .background,
-                                         backgroundColor: odd ? .primary : .secondary ))
+                                         name: object.name,
+                                         fontColor: odd ? .background : .primary,
+                                         backgroundColor: odd ? .primary : .background,
+                                         borderColor: .primary))
         })
         hideError()
         let viewModel = Manufacturers.ViewModel(hasMoreElements: response.hasMoreElements, brands: brands)

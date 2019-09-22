@@ -47,7 +47,7 @@ class ModelsInteractor: ModelsBusinessLogic, ModelsDataStore {
 
         isLoading = true
         presenter?.presentLoading()
-        worker.fetchModels(manufacturer: self.manufacturerId, page: 0, callback: { [weak self] response in
+        worker.fetchModels(manufacturer: self.manufacturerId, page: self.currentPage, callback: { [weak self] response in
             switch response {
             case .success(let entity):
                 self?.currentPage += 1
