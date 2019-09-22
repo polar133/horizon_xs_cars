@@ -52,6 +52,7 @@
 		962423C823370852009B6A6C /* ManufacturerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962423C623370852009B6A6C /* ManufacturerCell.xib */; };
 		962423CC2337139B009B6A6C /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423CA2337139A009B6A6C /* ModelCell.swift */; };
 		962423CD2337139B009B6A6C /* ModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962423CB2337139A009B6A6C /* ModelCell.xib */; };
+		962423D123371A02009B6A6C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423D023371A02009B6A6C /* LoadingCell.swift */; };
 		D6FFFEFBB0DEFF4384147ED4 /* Pods_HorizonXS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4124BE9A288738A518058659 /* Pods_HorizonXS.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		962423C623370852009B6A6C /* ManufacturerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManufacturerCell.xib; sourceTree = "<group>"; };
 		962423CA2337139A009B6A6C /* ModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCell.swift; sourceTree = "<group>"; };
 		962423CB2337139A009B6A6C /* ModelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelCell.xib; sourceTree = "<group>"; };
+		962423D023371A02009B6A6C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		AA4D3159E1B2BC5CF0DD6104 /* Pods-HorizonXS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.release.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.release.xcconfig"; sourceTree = "<group>"; };
 		F1A718BF0CADA58537E218F3 /* Pods_HorizonXSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HorizonXSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F7530596E646B29341D28D /* Pods-HorizonXS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.debug.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +233,8 @@
 		9624236023367731009B6A6C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				962423CF2337197C009B6A6C /* LoadingCell */,
+				962423CE23371973009B6A6C /* LoadingView */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -368,6 +372,21 @@
 				962423CB2337139A009B6A6C /* ModelCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		962423CE23371973009B6A6C /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		962423CF2337197C009B6A6C /* LoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				962423D023371A02009B6A6C /* LoadingCell.swift */,
+			);
+			path = LoadingCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,6 +601,7 @@
 				962423AA2336DCF5009B6A6C /* ModelsPresenter.swift in Sources */,
 				962423AF2336DCF5009B6A6C /* ModelsInteractor.swift in Sources */,
 				9624239423369203009B6A6C /* XSError.swift in Sources */,
+				962423D123371A02009B6A6C /* LoadingCell.swift in Sources */,
 				962423BA2336E93A009B6A6C /* ModelsBuilder.swift in Sources */,
 				9624239223369039009B6A6C /* ManufacturersEntity.swift in Sources */,
 				962423C723370852009B6A6C /* ManufacturerCell.swift in Sources */,

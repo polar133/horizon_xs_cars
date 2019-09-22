@@ -38,6 +38,7 @@ class ManufacturersViewController: UITableViewController {
     func configTableView() {
         tableView.prefetchDataSource = self
         tableView.register(UINib(nibName: ManufacturerCell.nibName, bundle: Bundle.main), forCellReuseIdentifier: ManufacturerCell.reuseIdentifier)
+        tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         tableView.separatorStyle = .none
     }
 }
@@ -95,12 +96,16 @@ extension ManufacturersViewController: UITableViewDataSourcePrefetching {
         guard !isLoadingCell(for: indexPath.row),
             let cell = tableView.dequeueReusableCell(withIdentifier: ManufacturerCell.reuseIdentifier, for: indexPath) as? ManufacturerCell,
             let viewModel = viewModel?.brands[indexPath.row] else {
-                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-                cell.tag = indexPath.row
-                cell.textLabel?.text = "Loading"
-                return cell
+                if let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as? LoadingCell {
+                    cell.loadingActivity.startAnimating()
+                    cell.tag = indexPath.row
+                    return cell
+                } else {
+                    return UITableViewCell()
+                }
         }
         cell.configCell(viewModel: viewModel)
+        cell.tag = indexPath.row
         return cell
 
     }
