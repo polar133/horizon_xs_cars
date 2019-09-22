@@ -26,6 +26,7 @@ class ManufacturersRouter: NSObject, ManufacturersRoutingLogic, ManufacturersDat
             return
         }
         passDataToModels(source: dataStore, destination: &destinationDS)
+        destinationVC.title = dataStore.name
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
 

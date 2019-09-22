@@ -25,15 +25,31 @@ class ModelsViewController: UITableViewController {
     var interactor: ModelsBusinessLogic?
     var router: (NSObjectProtocol & ModelsRoutingLogic & ModelsDataPassing)?
 
+    // MARK: Properties
+    var viewModel: Models.ViewModel?
+
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configTableView()
+        loadModels()
+    }
+
+    func loadModels() {
+        interactor?.getModels()
+    }
+
+    func configTableView() {
+        tableView.prefetchDataSource = self
     }
 }
 
 extension ModelsViewController: ModelsDisplayLogic {
     func displayModels(viewModel: Models.ViewModel) {
-
+        self.viewModel = viewModel
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     func displayLoading() {
@@ -56,4 +72,52 @@ extension ModelsViewController: ModelsDisplayLogic {
 
     }
 
+}
+
+// MARK: UITableViewDelegate extension
+extension ModelsViewController: UITableViewDataSourcePrefetching {
+
+    func isLoadingCell(for tag: Int) -> Bool {
+      return tag + 1 >= viewModel?.models.count ?? 0
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let viewModel = self.viewModel else {
+            return 0
+        }
+        return viewModel.hasMoreElements ? viewModel.models.count : viewModel.models.count - 1
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+        cell.tag = indexPath.row
+        if isLoadingCell(for: indexPath.row) {
+            cell.textLabel?.text = "Loading"
+        } else {
+            guard let viewModel = viewModel?.models[indexPath.row] else {
+                return cell
+            }
+            cell.textLabel?.textColor = UIColor.appColor(viewModel.fontColor)
+            cell.textLabel?.text = viewModel.name
+            cell.contentView.backgroundColor = UIColor.appColor(viewModel.backgroundColor)
+        }
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !isLoadingCell(for: indexPath.row), let viewModel = viewModel?.models[indexPath.row] else {
+            return
+        }
+        let request = Models.Request(name: viewModel.name)
+        self.interactor?.modelSelected(request: request)
+    }
+
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        guard let tag = tableView.visibleCells.last?.tag else {
+            return
+        }
+        if isLoadingCell(for: tag) {
+          loadModels()
+        }
+    }
 }
