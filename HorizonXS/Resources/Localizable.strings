@@ -14,6 +14,8 @@ TIME_OUT = "We didn't anticipate this taking so long";
 UNKNOWN = "Oops! Something is broken.";
 RETRY = "Retry";
 
+NO_MANUFACTURERS = "No Manufacturers Availables";
+NO_MODELS = "No Models Availables";
 
 MANUFACTURERS = "Manufacturers";
 SELECTION = "Summary";

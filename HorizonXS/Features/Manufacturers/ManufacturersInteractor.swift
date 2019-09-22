@@ -46,14 +46,10 @@ class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStor
                 self?.currentPage += 1
                 var brands = self?.brands ?? []
                 entity.brands.forEach { if !brands.contains($0) { brands.append($0) } }
-                if self?.brands != brands {
-                    self?.brands = brands
-                    self?.totalElements = entity.totalPageCount
-                    let response = Manufacturers.Response(hasMoreElements: (self?.currentPage ?? 1) < (entity.totalPageCount ?? 1), brands: brands)
-                    self?.presenter?.presentManufacturers(response: response)
-                } else {
-                    self?.presenter?.hideLoading()
-                }
+                self?.brands = brands
+                self?.totalElements = entity.totalPageCount
+                let response = Manufacturers.Response(hasMoreElements: (self?.currentPage ?? 1) < (entity.totalPageCount ?? 1), brands: brands)
+                self?.presenter?.presentManufacturers(response: response)
             case .failure(let error):
                 self?.presenter?.presentError(msg: error.localizedDescription)
             }

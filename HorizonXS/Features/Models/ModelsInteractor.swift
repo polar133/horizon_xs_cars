@@ -53,14 +53,10 @@ class ModelsInteractor: ModelsBusinessLogic, ModelsDataStore {
                 self?.currentPage += 1
                 var models = self?.models ?? []
                 entity.models.forEach { if !models.contains($0) { models.append($0) } }
-                if self?.models != models {
-                    self?.models = models
-                    self?.totalElements = entity.totalPageCount
-                    let response = Models.Response(hasMoreElements: (self?.currentPage ?? 1) < (entity.totalPageCount ?? 1), models: models)
-                    self?.presenter?.presentModels(response: response)
-                } else {
-                    self?.presenter?.hideLoading()
-                }
+                self?.models = models
+                self?.totalElements = entity.totalPageCount
+                let response = Models.Response(hasMoreElements: (self?.currentPage ?? 1) < (entity.totalPageCount ?? 1), models: models)
+                self?.presenter?.presentModels(response: response)
             case .failure(let error):
                 self?.presenter?.presentError(msg: error.localizedDescription)
             }

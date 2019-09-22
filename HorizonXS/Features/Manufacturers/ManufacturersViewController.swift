@@ -41,6 +41,15 @@ class ManufacturersViewController: UITableViewController {
         tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         tableView.separatorStyle = .none
     }
+
+    func showEmptyState() {
+        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        noDataLabel.text = "NO_MANUFACTURERS".localized
+        noDataLabel.textColor = UIColor.appColor(.primary)
+        noDataLabel.textAlignment = NSTextAlignment.center
+        self.tableView.backgroundView = noDataLabel
+        self.tableView.isScrollEnabled = false
+    }
 }
 
 // MARK: ManufacturersDisplayLogic extension
@@ -77,19 +86,26 @@ extension ManufacturersViewController: ManufacturersDisplayLogic {
 // MARK: UITableViewDelegate extension
 extension ManufacturersViewController: UITableViewDataSourcePrefetching {
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard let viewModel = self.viewModel else {
+            return 0
+        }
+        guard !viewModel.brands.isEmpty else {
+            self.showEmptyState()
+            return 0
+        }
+        return 1
     }
 
-    func isLoadingCell(for tag: Int) -> Bool {
-      return tag + 1 >= viewModel?.brands.count ?? 0
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = self.viewModel else {
             return 0
         }
-        return viewModel.hasMoreElements ? viewModel.brands.count : viewModel.brands.count - 1
+        return viewModel.hasMoreElements ? viewModel.brands.count + 1 : viewModel.brands.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,5 +141,9 @@ extension ManufacturersViewController: UITableViewDataSourcePrefetching {
         if isLoadingCell(for: tag) {
           loadManufacturers()
         }
+    }
+
+    func isLoadingCell(for tag: Int) -> Bool {
+      return tag + 1 > viewModel?.brands.count ?? 0
     }
 }

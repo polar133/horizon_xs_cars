@@ -41,6 +41,15 @@ class ModelsViewController: UITableViewController {
         tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         tableView.separatorStyle = .none
     }
+
+    func showEmptyState() {
+        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        noDataLabel.text = "NO_MODELS".localized
+        noDataLabel.textColor = UIColor.appColor(.secondary)
+        noDataLabel.textAlignment = NSTextAlignment.center
+        self.tableView.backgroundView = noDataLabel
+        self.tableView.isScrollEnabled = false
+    }
 }
 
 extension ModelsViewController: ModelsDisplayLogic {
@@ -77,8 +86,15 @@ extension ModelsViewController: ModelsDisplayLogic {
 // MARK: UITableViewDelegate extension
 extension ModelsViewController: UITableViewDataSourcePrefetching {
 
-    func isLoadingCell(for tag: Int) -> Bool {
-      return tag + 1 >= viewModel?.models.count ?? 0
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard let viewModel = self.viewModel else {
+            return 0
+        }
+        guard !viewModel.models.isEmpty else {
+            self.showEmptyState()
+            return 0
+        }
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,7 +105,7 @@ extension ModelsViewController: UITableViewDataSourcePrefetching {
         guard let viewModel = self.viewModel else {
             return 0
         }
-        return viewModel.hasMoreElements ? viewModel.models.count : viewModel.models.count - 1
+        return viewModel.hasMoreElements ? viewModel.models.count + 1 : viewModel.models.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,4 +141,9 @@ extension ModelsViewController: UITableViewDataSourcePrefetching {
           loadModels()
         }
     }
+
+    func isLoadingCell(for tag: Int) -> Bool {
+      return tag + 1 > viewModel?.models.count ?? 0
+    }
+
 }
