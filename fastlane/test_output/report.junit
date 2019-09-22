@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='HorizonXSTests.xctest' tests='32' failures='0'>
+  <testsuite name='HorizonXSTests.HorizonXSTests' tests='2' failures='0'>
+    <testcase classname='HorizonXSTests.HorizonXSTests' name='testExample' time='0.001'/>
+    <testcase classname='HorizonXSTests.HorizonXSTests' name='testPerformanceExample' time='0.295'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ManufacturersInteractorTests' tests='5' failures='0'>
+    <testcase classname='HorizonXSTests.ManufacturersInteractorTests' name='testGetManufacturers' time='0.006'/>
+    <testcase classname='HorizonXSTests.ManufacturersInteractorTests' name='testGetManufacturerseError' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersInteractorTests' name='testGetManufacturersLessPages' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersInteractorTests' name='testGetManufacturersLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersInteractorTests' name='testManufacturerSelected' time='0.000'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ManufacturersPresenterTests' tests='6' failures='0'>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testHideError' time='0.001'/>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testHideLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testPresentError' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testPresentLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testPresentManufacturers' time='0.000'/>
+    <testcase classname='HorizonXSTests.ManufacturersPresenterTests' name='testPresentModel' time='0.000'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ManufacturersWorkerTests' tests='3' failures='0'>
+    <testcase classname='HorizonXSTests.ManufacturersWorkerTests' name='testErrorFetchManufacturers' time='0.005'/>
+    <testcase classname='HorizonXSTests.ManufacturersWorkerTests' name='testFetchManufacturers' time='0.015'/>
+    <testcase classname='HorizonXSTests.ManufacturersWorkerTests' name='testWrongFetchManufacturers' time='0.004'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ModelsInteractorTests' tests='6' failures='0'>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testGetModels' time='0.002'/>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testGetModelsError' time='0.001'/>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testGetModelsLessPages' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testGetModelsLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testGetModelsWithoutManufacturer' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsInteractorTests' name='testModelSelected' time='0.000'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ModelsPresenterTests' tests='7' failures='0'>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testHideError' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testHideLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testPresentError' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testPresentLoading' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testPresentManufacturers' time='0.001'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testPresentManufacturersEmpty' time='0.000'/>
+    <testcase classname='HorizonXSTests.ModelsPresenterTests' name='testPresentModel' time='0.000'/>
+  </testsuite>
+  <testsuite name='HorizonXSTests.ModelsWorkerTests' tests='3' failures='0'>
+    <testcase classname='HorizonXSTests.ModelsWorkerTests' name='testErrorFetchModels' time='0.064'/>
+    <testcase classname='HorizonXSTests.ModelsWorkerTests' name='testFetchModels' time='0.004'/>
+    <testcase classname='HorizonXSTests.ModelsWorkerTests' name='testWrongFetchModels' time='0.003'/>
+  </testsuite>
+</testsuites>

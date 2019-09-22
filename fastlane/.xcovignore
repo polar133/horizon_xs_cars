@@ -1,0 +1,11 @@
+
+# Exclude all files ending by "View.swift"
+- .*View.swift
+- .*Cell.swift
+- .*Controller.swift
+- .*Router.swift
+- .*Builder.swift
+- .*Extension.swift
+
+# Exclude all dependencies
+- Pods
