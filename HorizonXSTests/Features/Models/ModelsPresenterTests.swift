@@ -36,15 +36,132 @@ class ModelsPresenterTests: XCTestCase {
         sut = ModelsPresenter()
     }
 
-    // MARK: Test doubles
+    // MARK: Tests
+    func testPresentManufacturers() {
+        // Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+        let response = Models.Response(hasMoreElements: false, models: [CarModel(id: "i3", name: "i3"), CarModel(id: "Z8", name: "Z8")])
 
-    class ModelsDisplayLogicSpy: ModelsDisplayLogic {
-        var displaySomethingCalled = false
+        // When
+        sut.presentModels(response: response)
 
-        func displaySomething(viewModel: Models.ViewModel) {
-            displaySomethingCalled = true
-        }
+        // Then
+        XCTAssertTrue(spy.displayModelsCalled)
+        XCTAssertNotNil(spy.viewModel)
     }
 
-    // MARK: Tests
+    func testPresentManufacturersEmpty() {
+        // Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+        let response = Models.Response(hasMoreElements: false, models: [])
+
+        // When
+        sut.presentModels(response: response)
+
+        // Then
+        XCTAssertTrue(spy.displayModelsCalled)
+    }
+
+    func testPresentModel() {
+        //Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+
+        //When
+        sut.presentModel()
+
+        //Then
+        XCTAssertTrue(spy.showModelCalled)
+    }
+
+    func testPresentLoading() {
+        //Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+
+        //When
+        sut.presentLoading()
+
+        //Then
+        XCTAssertTrue(spy.displayLoadingCalled)
+    }
+
+    func testHideLoading() {
+        //Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+        sut.isLoading = true
+
+        //When
+        sut.hideLoading()
+
+        //Then
+        XCTAssertTrue(spy.hideLoadingCalled)
+    }
+
+    func testPresentError() {
+        //Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+
+        //When
+        sut.presentError(msg: "ERROR")
+
+        //Then
+        XCTAssertTrue(spy.displayErrorCalled)
+    }
+
+    func testHideError() {
+        //Given
+        let spy = ModelsDisplayLogicSpy()
+        sut.viewController = spy
+        sut.hasError = true
+
+        //When
+        sut.hideError()
+
+        //Then
+        XCTAssertTrue(spy.hideErrorCalled)
+    }
+
+    
+}
+
+class ModelsDisplayLogicSpy: ModelsDisplayLogic {
+
+    var viewModel: Models.ViewModel?
+
+    var displayModelsCalled = false
+    func displayModels(viewModel: Models.ViewModel) {
+        self.viewModel = viewModel
+        displayModelsCalled = true
+    }
+
+    var displayLoadingCalled = false
+    func displayLoading() {
+        displayLoadingCalled = true
+    }
+
+    var hideLoadingCalled = false
+    func hideLoading() {
+        hideLoadingCalled = true
+    }
+
+    var displayErrorCalled = false
+    func displayError(msg: String) {
+        displayErrorCalled = true
+    }
+
+    var hideErrorCalled = false
+    func hideError() {
+        hideErrorCalled = true
+    }
+
+    var showModelCalled = true
+    func showModel() {
+        showModelCalled = true
+    }
+
 }

@@ -7,6 +7,8 @@
 //
 import Foundation
 
+typealias Model = Models.ViewModel.Model
+
 enum Models {
     // MARK: Use cases
     struct Request {
@@ -23,7 +25,6 @@ enum Models {
         var models: [Model]
         //swiftlint:disable nesting
         struct Model {
-            let id: String
             let name: String
             let fontColor: AssetsColor
             let backgroundColor: AssetsColor

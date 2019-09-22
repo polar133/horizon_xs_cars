@@ -13,29 +13,47 @@
 import UIKit
 
 protocol ModelsDisplayLogic: class {
-    func displaySomething(viewModel: Models.ViewModel)
+    func displayModels(viewModel: Models.ViewModel)
+    func displayLoading()
+    func hideLoading()
+    func displayError(msg: String)
+    func hideError()
+    func showModel()
 }
 
-class ModelsViewController: UITableViewController, ModelsDisplayLogic {
+class ModelsViewController: UITableViewController {
     var interactor: ModelsBusinessLogic?
     var router: (NSObjectProtocol & ModelsRoutingLogic & ModelsDataPassing)?
 
     // MARK: View lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+    }
+}
+
+extension ModelsViewController: ModelsDisplayLogic {
+    func displayModels(viewModel: Models.ViewModel) {
+
     }
 
-    // MARK: Do something
+    func displayLoading() {
 
-    //@IBOutlet weak var nameTextField: UITextField!
-
-    func doSomething() {
-        interactor?.getModels()
     }
 
-    func displaySomething(viewModel: Models.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func hideLoading() {
+
     }
+
+    func displayError(msg: String) {
+
+    }
+
+    func hideError() {
+
+    }
+
+    func showModel() {
+
+    }
+
 }
