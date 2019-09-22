@@ -19,7 +19,10 @@ protocol ManufacturersDisplayLogic: class {
 class ManufacturersViewController: UITableViewController {
     var interactor: ManufacturersBusinessLogic?
     var router: (NSObjectProtocol & ManufacturersRoutingLogic & ManufacturersDataPassing)?
+
     var viewModel: Manufacturers.ViewModel?
+    private var loadingView: LoadingView?
+    private var errorView: ErrorView?
 
     // MARK: View lifecycle
 
@@ -67,19 +70,48 @@ extension ManufacturersViewController: ManufacturersDisplayLogic {
     }
 
     func displayLoading() {
-
+        self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.addSubview(self?.loadingView ?? UIView())
+            self?.loadingView?.startLoading()
+        }
     }
 
     func hideLoading() {
-
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingView?.endLoading()
+            self?.loadingView?.removeFromSuperview()
+            self?.loadingView = nil
+        }
     }
 
     func displayError(msg: String) {
+        guard viewModel == nil else {
+            return
+        }
+        self.errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        self.errorView?.delegate = self
+        self.errorView?.setError(msg)
+        self.errorView?.setErrorTextColor(UIColor.appColor(.primary) ?? .black)
 
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.backgroundView = self?.errorView
+            self?.tableView.isScrollEnabled = false
+        }
     }
 
     func hideError() {
+        DispatchQueue.main.async { [weak self] in
+            self?.errorView = nil
+            self?.tableView.backgroundView = nil
+            self?.tableView.isScrollEnabled = true
+        }
+    }
+}
 
+extension ManufacturersViewController: ErroViewDelegate {
+    func didTapTryAgain(in errorView: ErrorView) {
+        self.loadManufacturers()
     }
 }
 

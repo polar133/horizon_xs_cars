@@ -23,6 +23,8 @@ class ModelsViewController: UITableViewController {
 
     // MARK: Properties
     var viewModel: Models.ViewModel?
+    private var loadingView: LoadingView?
+    private var errorView: ErrorView?
 
     // MARK: View lifecycle
     override func viewDidLoad() {
@@ -61,25 +63,53 @@ extension ModelsViewController: ModelsDisplayLogic {
     }
 
     func displayLoading() {
-
+        self.loadingView = LoadingView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.addSubview(self?.loadingView ?? UIView())
+            self?.loadingView?.startLoading()
+        }
     }
 
     func hideLoading() {
-
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingView?.endLoading()
+            self?.loadingView?.removeFromSuperview()
+            self?.loadingView = nil
+        }
     }
 
     func displayError(msg: String) {
-
+        guard viewModel == nil else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: self?.tableView.bounds.size.width ?? 0, height: self?.tableView.bounds.size.height ?? 0))
+            self?.errorView?.delegate = self
+            self?.tableView.backgroundView = self?.errorView
+            self?.errorView?.setError(msg)
+            self?.errorView?.setErrorTextColor(UIColor.appColor(.primary) ?? .black)
+            self?.tableView.isScrollEnabled = false
+        }
     }
 
     func hideError() {
-
+        DispatchQueue.main.async { [weak self] in
+            self?.errorView = nil
+            self?.tableView.backgroundView = nil
+            self?.tableView.isScrollEnabled = true
+        }
     }
 
     func showModel() {
         DispatchQueue.main.async { [weak self] in
             self?.router?.showAlert()
         }
+    }
+}
+
+extension ModelsViewController: ErroViewDelegate {
+    func didTapTryAgain(in errorView: ErrorView) {
+        self.loadModels()
     }
 }
 

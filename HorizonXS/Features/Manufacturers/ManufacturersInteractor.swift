@@ -39,7 +39,10 @@ class ManufacturersInteractor: ManufacturersBusinessLogic, ManufacturersDataStor
         }
 
         isLoading = true
-        presenter?.presentLoading()
+        if self.brands.isEmpty {
+            presenter?.presentLoading()
+        }
+        presenter?.hideError()
         worker.fetchManufacturers(page: currentPage, callback: { [weak self] response in
             switch response {
             case .success(let entity):

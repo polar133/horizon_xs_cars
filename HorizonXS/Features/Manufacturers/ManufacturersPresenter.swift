@@ -56,6 +56,7 @@ class ManufacturersPresenter: ManufacturersPresentationLogic {
 
     func presentError(msg: String) {
         hasError = true
+        self.hideLoading()
         self.viewController?.displayError(msg: msg)
     }
 

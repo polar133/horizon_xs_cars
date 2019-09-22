@@ -45,7 +45,10 @@ class ModelsInteractor: ModelsBusinessLogic, ModelsDataStore {
             return
         }
 
-        isLoading = true
+        if self.models.isEmpty {
+            presenter?.presentLoading()
+        }
+        presenter?.hideError()
         presenter?.presentLoading()
         worker.fetchModels(manufacturer: self.manufacturerId, page: self.currentPage, callback: { [weak self] response in
             switch response {

@@ -13,7 +13,7 @@ class LoadingCell: UITableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
-    
+
     let loadingActivity: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         activity.translatesAutoresizingMaskIntoConstraints = false

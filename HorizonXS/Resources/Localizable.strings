@@ -12,7 +12,7 @@ INVALID_RESPONSE = "Invalid response 🙃";
 NO_NETWORK = "The network connection is lost.";
 TIME_OUT = "We didn't anticipate this taking so long";
 UNKNOWN = "Oops! Something is broken.";
-RETRY = "Retry";
+RETRY = "Try again";
 
 NO_MANUFACTURERS = "No Manufacturers Availables";
 NO_MODELS = "No Models Availables";

@@ -53,6 +53,11 @@
 		962423CC2337139B009B6A6C /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423CA2337139A009B6A6C /* ModelCell.swift */; };
 		962423CD2337139B009B6A6C /* ModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962423CB2337139A009B6A6C /* ModelCell.xib */; };
 		962423D123371A02009B6A6C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423D023371A02009B6A6C /* LoadingCell.swift */; };
+		962423D4233722BA009B6A6C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423D3233722BA009B6A6C /* ErrorView.swift */; };
+		962423D6233723F3009B6A6C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423D5233723F3009B6A6C /* UIView+Extension.swift */; };
+		962423D823372429009B6A6C /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962423D723372429009B6A6C /* ErrorView.xib */; };
+		962423DA2337288A009B6A6C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423D92337288A009B6A6C /* LoadingView.swift */; };
+		962423DC23372894009B6A6C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962423DB23372894009B6A6C /* LoadingView.xib */; };
 		D6FFFEFBB0DEFF4384147ED4 /* Pods_HorizonXS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4124BE9A288738A518058659 /* Pods_HorizonXS.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +124,11 @@
 		962423CA2337139A009B6A6C /* ModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCell.swift; sourceTree = "<group>"; };
 		962423CB2337139A009B6A6C /* ModelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelCell.xib; sourceTree = "<group>"; };
 		962423D023371A02009B6A6C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		962423D3233722BA009B6A6C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		962423D5233723F3009B6A6C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		962423D723372429009B6A6C /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		962423D92337288A009B6A6C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		962423DB23372894009B6A6C /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		AA4D3159E1B2BC5CF0DD6104 /* Pods-HorizonXS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.release.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.release.xcconfig"; sourceTree = "<group>"; };
 		F1A718BF0CADA58537E218F3 /* Pods_HorizonXSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HorizonXSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F7530596E646B29341D28D /* Pods-HorizonXS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.debug.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +243,7 @@
 		9624236023367731009B6A6C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				962423D2233722A1009B6A6C /* ErrorView */,
 				962423CF2337197C009B6A6C /* LoadingCell */,
 				962423CE23371973009B6A6C /* LoadingView */,
 			);
@@ -278,6 +289,7 @@
 			children = (
 				96242383233687A5009B6A6C /* UINavigation+Extension.swift */,
 				9624239523369243009B6A6C /* String+Extension.swift */,
+				962423D5233723F3009B6A6C /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +389,8 @@
 		962423CE23371973009B6A6C /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
+				962423D92337288A009B6A6C /* LoadingView.swift */,
+				962423DB23372894009B6A6C /* LoadingView.xib */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
@@ -387,6 +401,15 @@
 				962423D023371A02009B6A6C /* LoadingCell.swift */,
 			);
 			path = LoadingCell;
+			sourceTree = "<group>";
+		};
+		962423D2233722A1009B6A6C /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				962423D3233722BA009B6A6C /* ErrorView.swift */,
+				962423D723372429009B6A6C /* ErrorView.xib */,
+			);
+			path = ErrorView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,9 +498,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9624230E23366A77009B6A6C /* LaunchScreen.storyboard in Resources */,
+				962423DC23372894009B6A6C /* LoadingView.xib in Resources */,
 				962423982336927D009B6A6C /* Localizable.strings in Resources */,
 				962423C823370852009B6A6C /* ManufacturerCell.xib in Resources */,
 				962423CD2337139B009B6A6C /* ModelCell.xib in Resources */,
+				962423D823372429009B6A6C /* ErrorView.xib in Resources */,
 				9624236623367926009B6A6C /* api.plist in Resources */,
 				9624230B23366A77009B6A6C /* Assets.xcassets in Resources */,
 			);
@@ -588,6 +613,7 @@
 				9624237E23368255009B6A6C /* ManufacturersViewController.swift in Sources */,
 				962423AC2336DCF5009B6A6C /* ModelsRouter.swift in Sources */,
 				962423AB2336DCF5009B6A6C /* ModelsWorker.swift in Sources */,
+				962423D4233722BA009B6A6C /* ErrorView.swift in Sources */,
 				962423BD2336F01C009B6A6C /* ModelsEntity.swift in Sources */,
 				9624230223366A74009B6A6C /* AppDelegate.swift in Sources */,
 				9624230423366A74009B6A6C /* SceneDelegate.swift in Sources */,
@@ -602,8 +628,10 @@
 				962423AF2336DCF5009B6A6C /* ModelsInteractor.swift in Sources */,
 				9624239423369203009B6A6C /* XSError.swift in Sources */,
 				962423D123371A02009B6A6C /* LoadingCell.swift in Sources */,
+				962423D6233723F3009B6A6C /* UIView+Extension.swift in Sources */,
 				962423BA2336E93A009B6A6C /* ModelsBuilder.swift in Sources */,
 				9624239223369039009B6A6C /* ManufacturersEntity.swift in Sources */,
+				962423DA2337288A009B6A6C /* LoadingView.swift in Sources */,
 				962423C723370852009B6A6C /* ManufacturerCell.swift in Sources */,
 				962423CC2337139B009B6A6C /* ModelCell.swift in Sources */,
 				9624237C23368255009B6A6C /* ManufacturersRouter.swift in Sources */,
