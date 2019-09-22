@@ -16,3 +16,5 @@ RETRY = "Retry";
 
 
 MANUFACTURERS = "Manufacturers";
+SELECTION = "Summary";
+OK = "Dismiss";

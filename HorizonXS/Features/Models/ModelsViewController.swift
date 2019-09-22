@@ -41,14 +41,16 @@ class ModelsViewController: UITableViewController {
 
     func configTableView() {
         tableView.prefetchDataSource = self
+        tableView.register(UINib(nibName: ModelCell.nibName, bundle: Bundle.main), forCellReuseIdentifier: ModelCell.reuseIdentifier)
+        tableView.separatorStyle = .none
     }
 }
 
 extension ModelsViewController: ModelsDisplayLogic {
     func displayModels(viewModel: Models.ViewModel) {
         self.viewModel = viewModel
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
 
@@ -69,9 +71,10 @@ extension ModelsViewController: ModelsDisplayLogic {
     }
 
     func showModel() {
-
+        DispatchQueue.main.async { [weak self] in
+            self?.router?.showAlert()
+        }
     }
-
 }
 
 // MARK: UITableViewDelegate extension
@@ -79,6 +82,10 @@ extension ModelsViewController: UITableViewDataSourcePrefetching {
 
     func isLoadingCell(for tag: Int) -> Bool {
       return tag + 1 >= viewModel?.models.count ?? 0
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,18 +96,15 @@ extension ModelsViewController: UITableViewDataSourcePrefetching {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-        cell.tag = indexPath.row
-        if isLoadingCell(for: indexPath.row) {
-            cell.textLabel?.text = "Loading"
-        } else {
-            guard let viewModel = viewModel?.models[indexPath.row] else {
+        guard !isLoadingCell(for: indexPath.row),
+            let cell = tableView.dequeueReusableCell(withIdentifier: ModelCell.reuseIdentifier, for: indexPath) as? ModelCell,
+            let viewModel = viewModel?.models[indexPath.row] else {
+                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+                cell.tag = indexPath.row
+                cell.textLabel?.text = "Loading"
                 return cell
-            }
-            cell.textLabel?.textColor = UIColor.appColor(viewModel.fontColor)
-            cell.textLabel?.text = viewModel.name
-            cell.contentView.backgroundColor = UIColor.appColor(viewModel.backgroundColor)
         }
+        cell.configCell(viewModel: viewModel)
         return cell
     }
 

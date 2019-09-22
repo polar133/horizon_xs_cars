@@ -25,11 +25,12 @@ class ModelsPresenter: ModelsPresentationLogic {
 
     // MARK: Do something
     func presentModels(response: Models.Response) {
-        let models: [Model] = response.models.reduce(into: [], { models, object in
+        let models: [ModelViewModel] = response.models.reduce(into: [], { models, object in
             let odd = models.count % 2 != 0
-            models.append(Model(name: object.name.capitalized,
-                                fontColor: .background,
-                                backgroundColor: odd ? .primary : .secondary ))
+            models.append(ModelViewModel(name: object.name.capitalized,
+                                fontColor: odd ? .background : .secondary,
+                                backgroundColor: odd ? .secondary : .background,
+                                borderColor: .secondary ))
         })
         hideError()
         let viewModel = Models.ViewModel(hasMoreElements: response.hasMoreElements, models: models)

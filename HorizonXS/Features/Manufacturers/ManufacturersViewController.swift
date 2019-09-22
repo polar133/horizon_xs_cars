@@ -46,8 +46,8 @@ class ManufacturersViewController: UITableViewController {
 extension ManufacturersViewController: ManufacturersDisplayLogic {
     func displayManufacturers(viewModel: Manufacturers.ViewModel) {
         self.viewModel = viewModel
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
 

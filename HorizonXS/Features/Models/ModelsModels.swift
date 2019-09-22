@@ -7,7 +7,7 @@
 //
 import Foundation
 
-typealias Model = Models.ViewModel.Model
+typealias ModelViewModel = Models.ViewModel.Model
 
 enum Models {
     // MARK: Use cases
@@ -28,6 +28,7 @@ enum Models {
             let name: String
             let fontColor: AssetsColor
             let backgroundColor: AssetsColor
+            let borderColor: AssetsColor
         }
     }
 }

@@ -5,10 +5,10 @@
 //  Created by Carlos Jimenez on 9/21/19.
 //  Copyright (c) 2019 Carlos Jimenez. All rights reserved.
 //
-import Foundation
+import UIKit
 
 @objc protocol ModelsRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func showAlert()
 }
 
 protocol ModelsDataPassing {
@@ -20,33 +20,15 @@ class ModelsRouter: NSObject, ModelsRoutingLogic, ModelsDataPassing {
     var dataStore: ModelsDataStore?
 
     // MARK: Routing
+    func showAlert() {
+        guard let dataStore = self.dataStore else {
+            return
+        }
+        let alert = UIAlertController(title: "SELECTION".localized, message: "\(dataStore.manufacturerName) - \(dataStore.modelName)", preferredStyle: .alert)
+        viewController?.modalPresentationStyle = .overCurrentContext
+        let cancelAction = UIAlertAction.init(title: "OK".localized, style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        viewController?.present(alert, animated: true, completion: nil)
+    }
 
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-
-    // MARK: Navigation
-
-    //func navigateToSomewhere(source: ModelsViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
-
-    // MARK: Passing data
-
-    //func passDataToSomewhere(source: ModelsDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
 }
