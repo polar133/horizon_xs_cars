@@ -26,7 +26,9 @@ class ModelsInteractor: ModelsBusinessLogic, ModelsDataStore {
 
     func doSomething(request: Models.Request) {
         worker = ModelsWorker()
-        worker?.doSomeWork()
+        worker?.fetchModels(manufacturer: "120", page: 0, callback: { [weak self] response in
+
+        })
 
         let response = Models.Response()
         presenter?.presentSomething(response: response)

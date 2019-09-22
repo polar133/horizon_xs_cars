@@ -44,6 +44,10 @@
 		962423B72336DD4F009B6A6C /* ModelsWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423B32336DD4F009B6A6C /* ModelsWorkerTests.swift */; };
 		962423B82336DD4F009B6A6C /* ModelsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423B42336DD4F009B6A6C /* ModelsPresenterTests.swift */; };
 		962423BA2336E93A009B6A6C /* ModelsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423B92336E93A009B6A6C /* ModelsBuilder.swift */; };
+		962423BD2336F01C009B6A6C /* ModelsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423BC2336F01C009B6A6C /* ModelsEntity.swift */; };
+		962423BF2336F192009B6A6C /* ModelsStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962423BE2336F192009B6A6C /* ModelsStubs.swift */; };
+		962423C12336F1C0009B6A6C /* get_models_200.json in Resources */ = {isa = PBXBuildFile; fileRef = 962423C02336F1C0009B6A6C /* get_models_200.json */; };
+		962423C32336F1CD009B6A6C /* get_models_400.json in Resources */ = {isa = PBXBuildFile; fileRef = 962423C22336F1CD009B6A6C /* get_models_400.json */; };
 		D6FFFEFBB0DEFF4384147ED4 /* Pods_HorizonXS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4124BE9A288738A518058659 /* Pods_HorizonXS.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +105,10 @@
 		962423B32336DD4F009B6A6C /* ModelsWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsWorkerTests.swift; sourceTree = "<group>"; };
 		962423B42336DD4F009B6A6C /* ModelsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsPresenterTests.swift; sourceTree = "<group>"; };
 		962423B92336E93A009B6A6C /* ModelsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsBuilder.swift; sourceTree = "<group>"; };
+		962423BC2336F01C009B6A6C /* ModelsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsEntity.swift; sourceTree = "<group>"; };
+		962423BE2336F192009B6A6C /* ModelsStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsStubs.swift; sourceTree = "<group>"; };
+		962423C02336F1C0009B6A6C /* get_models_200.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get_models_200.json; sourceTree = "<group>"; };
+		962423C22336F1CD009B6A6C /* get_models_400.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get_models_400.json; sourceTree = "<group>"; };
 		AA4D3159E1B2BC5CF0DD6104 /* Pods-HorizonXS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.release.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.release.xcconfig"; sourceTree = "<group>"; };
 		F1A718BF0CADA58537E218F3 /* Pods_HorizonXSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HorizonXSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F7530596E646B29341D28D /* Pods-HorizonXS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HorizonXS.debug.xcconfig"; path = "Target Support Files/Pods-HorizonXS/Pods-HorizonXS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +294,8 @@
 			children = (
 				96242399233694A8009B6A6C /* get_manufacturer_200.json */,
 				9624239B233694C9009B6A6C /* get_manufacturer_400.json */,
+				962423C02336F1C0009B6A6C /* get_models_200.json */,
+				962423C22336F1CD009B6A6C /* get_models_400.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -301,6 +311,7 @@
 		962423A32336DCD0009B6A6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				962423BB2336EFEB009B6A6C /* Entities */,
 				962423A42336DCF4009B6A6C /* ModelsPresenter.swift */,
 				962423A52336DCF4009B6A6C /* ModelsWorker.swift */,
 				962423A62336DCF4009B6A6C /* ModelsRouter.swift */,
@@ -318,8 +329,17 @@
 				962423B22336DD4F009B6A6C /* ModelsInteractorTests.swift */,
 				962423B32336DD4F009B6A6C /* ModelsWorkerTests.swift */,
 				962423B42336DD4F009B6A6C /* ModelsPresenterTests.swift */,
+				962423BE2336F192009B6A6C /* ModelsStubs.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		962423BB2336EFEB009B6A6C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				962423BC2336F01C009B6A6C /* ModelsEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,7 +439,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9624239C233694C9009B6A6C /* get_manufacturer_400.json in Resources */,
+				962423C32336F1CD009B6A6C /* get_models_400.json in Resources */,
 				9624239A233694A8009B6A6C /* get_manufacturer_200.json in Resources */,
+				962423C12336F1C0009B6A6C /* get_models_200.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +539,7 @@
 				9624237E23368255009B6A6C /* ManufacturersViewController.swift in Sources */,
 				962423AC2336DCF5009B6A6C /* ModelsRouter.swift in Sources */,
 				962423AB2336DCF5009B6A6C /* ModelsWorker.swift in Sources */,
+				962423BD2336F01C009B6A6C /* ModelsEntity.swift in Sources */,
 				9624230223366A74009B6A6C /* AppDelegate.swift in Sources */,
 				9624230423366A74009B6A6C /* SceneDelegate.swift in Sources */,
 				962423642336777A009B6A6C /* HorizonAPI.swift in Sources */,
@@ -540,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				962423B82336DD4F009B6A6C /* ModelsPresenterTests.swift in Sources */,
+				962423BF2336F192009B6A6C /* ModelsStubs.swift in Sources */,
 				9624239E23369B25009B6A6C /* ManufacturersStubs.swift in Sources */,
 				9624231923366A77009B6A6C /* HorizonXSTests.swift in Sources */,
 				9624238E23368B49009B6A6C /* ManufacturersWorkerTests.swift in Sources */,

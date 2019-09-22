@@ -30,6 +30,15 @@ class ModelsWorkerTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: Get File
+    func loadResponse() -> ModelsEntity? {
+        let bundle = Bundle(for: ModelsWorkerTests.classForCoder())
+        let jsonFile =  bundle.path(forResource: "get_models_200", ofType: "json")
+        let data = try? Data(contentsOf: URL(fileURLWithPath: jsonFile!), options: [])
+        let serialized = try? JSONDecoder().decode(ModelsEntity.self, from: data!)
+        return serialized
+    }
+
     // MARK: Test setup
 
     func setupModelsWorker() {
@@ -39,12 +48,75 @@ class ModelsWorkerTests: XCTestCase {
     // MARK: Test doubles
 
     // MARK: Tests
+    func testFetchModels() {
+        //Given
+        ModelsStubs().enableStubs()
+        var response: ModelsEntity?
+        let expected = loadResponse()
+        let expectation = self.expectation(description: "Fetch models")
 
-    func testSomething() {
-        // Given
+        //When
+        sut.fetchModels(manufacturer: "000", page: 0) { result in
+            switch result {
+            case .success(let data):
+                response = data
+            default:
+                break
+            }
+            expectation.fulfill()
+        }
 
-        // When
+        //Then
+        waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertNotNil(response)
+        XCTAssertEqual(response, expected)
+    }
 
-        // Then
+    func testErrorFetchModels() {
+        //Given
+        ModelsStubs().enableErrorStubs()
+        var response: XSError?
+        let expected = XSError.unknown
+        let expectation = self.expectation(description: "Fetch models")
+
+        //When
+        sut.fetchModels(manufacturer: "123", page: 0) { result in
+            switch result {
+            case .failure(let error):
+                response = error
+            default:
+                break
+            }
+            expectation.fulfill()
+        }
+
+        //Then
+        waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertNotNil(response)
+        XCTAssertEqual(response, expected)
+    }
+
+    func testWrongFetchModels() {
+        //Given
+        ModelsStubs().enableWrongStubs()
+        var response: XSError?
+        let expected = XSError.responseSerialization
+        let expectation = self.expectation(description: "Fetch models")
+
+        //When
+        sut.fetchModels(manufacturer: "1337", page: 0) { result in
+            switch result {
+            case .failure(let error):
+                response = error
+            default:
+                break
+            }
+            expectation.fulfill()
+        }
+
+        //Then
+        waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertNotNil(response)
+        XCTAssertEqual(response, expected)
     }
 }
