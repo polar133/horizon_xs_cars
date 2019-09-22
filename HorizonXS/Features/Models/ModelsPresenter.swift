@@ -8,16 +8,40 @@
 import Foundation
 
 protocol ModelsPresentationLogic {
-    func presentSomething(response: Models.Response)
+    func presentLoading()
+    func hideLoading()
+    func presentError(msg: String)
+    func hideError()
+    func presentModels(response: Models.Response)
+    func presentModel()
 }
 
 class ModelsPresenter: ModelsPresentationLogic {
     weak var viewController: ModelsDisplayLogic?
 
     // MARK: Do something
+    func presentLoading() {
 
-    func presentSomething(response: Models.Response) {
-        let viewModel = Models.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
     }
+
+    func hideLoading() {
+
+    }
+
+    func presentError(msg: String) {
+
+    }
+
+    func hideError() {
+
+    }
+
+    func presentModels(response: Models.Response) {
+
+    }
+
+    func presentModel() {
+
+    }
+
 }

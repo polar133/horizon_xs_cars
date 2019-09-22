@@ -34,30 +34,140 @@ class ModelsInteractorTests: XCTestCase {
 
     func setupModelsInteractor() {
         sut = ModelsInteractor()
-    }
-
-    // MARK: Test doubles
-
-    class ModelsPresentationLogicSpy: ModelsPresentationLogic {
-        var presentSomethingCalled = false
-
-        func presentSomething(response: Models.Response) {
-            presentSomethingCalled = true
-        }
+        sut.manufacturerId = "1337"
     }
 
     // MARK: Tests
 
-    func testDoSomething() {
+    func testGetModels() {
         // Given
         let spy = ModelsPresentationLogicSpy()
         sut.presenter = spy
-        let request = Models.Request()
+        sut.worker = ModelsWorkerSpy()
 
         // When
-        sut.doSomething(request: request)
+        sut.getModels()
 
         // Then
-        XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.presentModelsCalled)
+    }
+
+    func testGetModelsError() {
+        // Given
+        let spy = ModelsPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ModelsWorkerErrorSpy()
+
+        // When
+        sut.getModels()
+
+        // Then
+        XCTAssertTrue(spy.presentErrorCalled)
+    }
+
+    func testGetModelsLoading() {
+        // Given
+        let spy = ModelsPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ModelsWorkerErrorSpy()
+        sut.isLoading = true
+
+        // When
+        sut.getModels()
+
+        // Then
+        XCTAssertFalse(spy.presentModelsCalled)
+    }
+
+    func testGetModelsLessPages() {
+        // Given
+        let spy = ModelsPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ModelsWorkerErrorSpy()
+        sut.currentPage = 100
+
+        // When
+        sut.getModels()
+
+        // Then
+        XCTAssertFalse(spy.presentModelsCalled)
+    }
+
+    func testGetModelsWithoutManufacturer() {
+        // Given
+        let spy = ModelsPresentationLogicSpy()
+        sut.presenter = spy
+        sut.worker = ModelsWorkerErrorSpy()
+        sut.manufacturerId = ""
+
+        // When
+        sut.getModels()
+
+        // Then
+        XCTAssertFalse(spy.presentModelsCalled)
+    }
+
+    func testModelSelected() {
+        // Given
+        let spy = ModelsPresentationLogicSpy()
+        sut.presenter = spy
+        sut.modelName = ""
+        let request = Models.Request(name: "W113")
+
+        // When
+        sut.modelSelected(request: request)
+
+        // Then
+        XCTAssertTrue(spy.presentModelCalled)
+        XCTAssertEqual(sut.modelName, "W113")
+    }
+
+}
+
+class ModelsPresentationLogicSpy: ModelsPresentationLogic {
+    var presentModelCalled = false
+    func presentModel() {
+        presentModelCalled = true
+    }
+
+    var presentModelsCalled = false
+    func presentModels(response: Models.Response) {
+        presentModelsCalled = true
+    }
+    var presentLoadingCalled = false
+    func presentLoading() {
+        presentLoadingCalled = true
+    }
+    var hideLoadingCalled = false
+    func hideLoading() {
+        hideLoadingCalled = true
+    }
+    var presentErrorCalled = false
+    func presentError(msg: String) {
+        presentErrorCalled = true
+    }
+    var hideErrorCalled = false
+    func hideError() {
+        hideErrorCalled = true
+    }
+}
+
+// MARK: Workers SPY
+class ModelsWorkerSpy: ModelsWorker {
+
+    override func fetchModels(manufacturer: String, page: Int = 0, callback: @escaping (Result<ModelsEntity>) -> Void) {
+        let bundle = Bundle(for: ModelsInteractorTests.classForCoder())
+        let jsonFile =  bundle.path(forResource: "get_models_200", ofType: "json")
+        let data = try? Data(contentsOf: URL(fileURLWithPath: jsonFile!), options: [])
+        let serialized = try? JSONDecoder().decode(ModelsEntity.self, from: data!)
+        callback(.success(serialized!))
+    }
+
+}
+
+class ModelsWorkerErrorSpy: ModelsWorker {
+
+    override func fetchModels(manufacturer: String, page: Int = 0, callback: @escaping (Result<ModelsEntity>) -> Void) {
+        callback(.failure(.responseSerialization))
     }
 }

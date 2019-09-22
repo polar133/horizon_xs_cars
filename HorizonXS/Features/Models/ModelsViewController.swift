@@ -32,8 +32,7 @@ class ModelsViewController: UITableViewController, ModelsDisplayLogic {
     //@IBOutlet weak var nameTextField: UITextField!
 
     func doSomething() {
-        let request = Models.Request()
-        interactor?.doSomething(request: request)
+        interactor?.getModels()
     }
 
     func displaySomething(viewModel: Models.ViewModel) {

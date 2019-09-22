@@ -47,17 +47,4 @@ class ModelsPresenterTests: XCTestCase {
     }
 
     // MARK: Tests
-
-    func testPresentSomething() {
-        // Given
-        let spy = ModelsDisplayLogicSpy()
-        sut.viewController = spy
-        let response = Models.Response()
-
-        // When
-        sut.presentSomething(response: response)
-
-        // Then
-        XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-    }
 }

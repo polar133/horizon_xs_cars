@@ -32,7 +32,7 @@ class ManufacturersRouter: NSObject, ManufacturersRoutingLogic, ManufacturersDat
     // MARK: Passing data
 
     func passDataToModels(source: ManufacturersDataStore, destination: inout ModelsDataStore) {
-        destination.name = source.name
-        destination.id = source.id
+        destination.manufacturerName = source.name
+        destination.manufacturerId = source.id
     }
 }
