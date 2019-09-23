@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorView" customModule="HorizonXS" customModuleProvider="target">
+            <connections>
+                <outlet property="errorLabel" destination="3Nb-sk-xgZ" id="jNI-ma-FXT"/>
+                <outlet property="tryAgainButton" destination="wWW-QO-rJe" id="2yR-ho-6JK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="MPw-K4-Fj2">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="185"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWW-QO-rJe">
+                    <rect key="frame" x="47" y="108.5" width="208" height="40"/>
+                    <color key="backgroundColor" name="primary"/>
+                    <accessibility key="accessibilityConfiguration" identifier="ErrorViewTryAgainButton"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="HdI-ya-htV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Retry">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="tryAgain:" destination="-1" eventType="touchUpInside" id="6md-Nd-tPM"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3Nb-sk-xgZ">
+                    <rect key="frame" x="33" y="92.5" width="236" height="0.0"/>
+                    <accessibility key="accessibilityConfiguration" identifier="ErrorViewDescriptionLabel"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstItem="wWW-QO-rJe" firstAttribute="top" secondItem="3Nb-sk-xgZ" secondAttribute="bottom" constant="16" id="0UE-9m-DC6"/>
+                <constraint firstItem="3Nb-sk-xgZ" firstAttribute="centerY" secondItem="MPw-K4-Fj2" secondAttribute="centerY" id="VA2-Zk-aeh"/>
+                <constraint firstItem="wWW-QO-rJe" firstAttribute="centerX" secondItem="MPw-K4-Fj2" secondAttribute="centerX" id="VVI-xL-37f"/>
+                <constraint firstItem="wWW-QO-rJe" firstAttribute="leading" secondItem="7TT-yj-FQX" secondAttribute="leading" constant="47" id="gaJ-F2-qay"/>
+                <constraint firstItem="3Nb-sk-xgZ" firstAttribute="leading" secondItem="7TT-yj-FQX" secondAttribute="leading" constant="33" id="o7C-CZ-PSY"/>
+                <constraint firstItem="7TT-yj-FQX" firstAttribute="trailing" secondItem="wWW-QO-rJe" secondAttribute="trailing" constant="47" id="tRg-Zc-rpT"/>
+                <constraint firstItem="7TT-yj-FQX" firstAttribute="trailing" secondItem="3Nb-sk-xgZ" secondAttribute="trailing" constant="33" id="yv8-8g-bPh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="7TT-yj-FQX"/>
+            <point key="canvasLocation" x="15.942028985507248" y="-290.95982142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="primary">
+            <color red="0.92054778337478638" green="0.26961046457290649" blue="0.36860117316246033" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

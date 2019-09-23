@@ -1,0 +1,82 @@
+
+fastlane_version "2.129.0"
+skip_docs
+opt_out_usage
+
+default_platform :ios
+
+platform :ios do
+
+	desc "Build"
+	lane :build do
+		install_pods
+		unit_tests
+		coverage
+		swiftlint_check
+	end
+
+    ######################################################################################
+    # PRE TASKS
+    ######################################################################################
+
+    before_all do
+
+    end
+
+    ######################################################################################
+    # CocoaPods
+    ######################################################################################
+
+    desc "Install cocoapods dependencies"
+    lane :install_pods do
+    	sh "rm -f Podfile.lock"
+    	clean_cocoapods_cache
+    	clear_derived_data
+    	cocoapods(
+    		repo_update: true,
+    		try_repo_update_on_error: true
+    		)
+    end
+
+    ######################################################################################
+    # Private lanes
+    ######################################################################################
+
+    desc "Unit Tests"
+    lane :unit_tests do
+    	scan(
+    		workspace: "HorizonXS.xcworkspace",
+    		devices: ["iPhone 8"],
+    		clean: true
+    		)
+    end
+
+    desc "Coverage report"
+    lane :coverage do
+    	begin
+    		xcov(
+    			workspace: "HorizonXS.xcworkspace",
+    			output_directory: "fastlane/test_output/xcov_output"
+    			)
+    	rescue => ex
+    		UI.error("Without unit tests")
+    	end
+    end
+
+    desc "Swiftlint"
+    lane :swiftlint_check do
+    	swiftlint(
+    		output_file: "fastlane/test_output/result.html",
+    		reporter: "html",
+    		ignore_exit_status: false
+    		)
+    end
+
+    ######################################################################################
+    # POST TASKS
+    ######################################################################################
+    after_all do |lane|
+
+    end
+
+end
