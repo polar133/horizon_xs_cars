@@ -16,6 +16,6 @@ enum AssetsColor: String {
 
 extension UIColor {
     static func appColor(_ name: AssetsColor) -> UIColor? {
-        return UIColor(named: name.rawValue)
+        return UIColor(named: name.rawValue.capitalized)
     }
 }
