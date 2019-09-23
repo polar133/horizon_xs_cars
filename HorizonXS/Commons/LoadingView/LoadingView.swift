@@ -12,7 +12,6 @@ class LoadingView: UIView {
 
     private weak var contentView: UIView?
     @IBOutlet private weak var imageLoading: UIImageView!
-    @IBOutlet private weak var descriptionLabel: UILabel!
 
     // MARK: - Inits
     public override init(frame: CGRect) {
@@ -35,12 +34,7 @@ class LoadingView: UIView {
 
     }
 
-    func willEnterForegroundNotification() {
-        runSpinAnimationOnView(imageLoading, duration: 60, rotations: 360)
-    }
-
     // MARK: - Public
-
     public func startLoading() {
         DispatchQueue.main.async {
             self.runSpinAnimationOnView(self.imageLoading, duration: 60, rotations: 360)
@@ -52,10 +46,6 @@ class LoadingView: UIView {
             self.imageLoading.layer.removeAllAnimations()
             self.removeFromSuperview()
         }
-    }
-
-    public func setDescription(_ description: String) {
-        descriptionLabel.text = description
     }
 
     public func backgroundColor(color: UIColor) {
