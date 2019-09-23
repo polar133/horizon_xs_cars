@@ -89,12 +89,11 @@ extension ManufacturersViewController: ManufacturersDisplayLogic {
         guard viewModel == nil else {
             return
         }
-        self.errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
-        self.errorView?.delegate = self
-        self.errorView?.setError(msg)
-        self.errorView?.setErrorTextColor(UIColor.appColor(.primary) ?? .black)
-
         DispatchQueue.main.async { [weak self] in
+            self?.errorView = ErrorView(frame: CGRect(x: 0, y: 0, width: self?.tableView.bounds.size.width ?? 0, height: self?.tableView.bounds.size.height ?? 0))
+            self?.errorView?.delegate = self
+            self?.errorView?.setError(msg)
+            self?.errorView?.setErrorTextColor(UIColor.appColor(.primary) ?? .black)
             self?.tableView.backgroundView = self?.errorView
             self?.tableView.isScrollEnabled = false
         }
